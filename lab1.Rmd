@@ -1,0 +1,31 @@
+---
+title: "lab_1"
+output: [beamer_presentation,html_document,word_document]
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#install.packages('rmarkdown')
+#install.packages("install.load")
+library(rmarkdown)
+library(install.load)
+install_load("mosaic","ggplot2","devtools","tidyverse")
+```
+
+2. Find a data set to store in your project
+```{r message=FALSE, warning=FALSE}
+library(kernlab)
+data(spam)
+```
+
+3.	Create a new R Markdown document with html output 
+  + Intermediate: have the document create both html and MS-Word output.
+  + Intermediate: would it work to also have the document create a presentation (e.g. beamer) from your Rmd file? Why or why not?  
+
+# Intro
+a. Spam is a data set collected at Hewlett-Packard Labs, that classifies 4601 e-mails as spam or non-spam. In addition to this class label there are 57 variables indicating the frequency of certain words and characters in the e-mail.Questions about the data:
+* Are there certain words that spam emails are more likely to contain?
+* What's the best way to block spam emails without filtering out non-spams?
+
+b. 
