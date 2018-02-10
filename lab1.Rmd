@@ -1,6 +1,6 @@
 ---
 title: "lab_1"
-output: [beamer_presentation,html_document,word_document]
+output: html_document
 ---
 
 
@@ -15,6 +15,7 @@ install_load("mosaic","ggplot2","devtools","tidyverse")
 
 2. Find a data set to store in your project
 ```{r message=FALSE, warning=FALSE}
+#install.packages("kernlab")
 library(kernlab)
 data(spam)
 ```
@@ -28,4 +29,33 @@ a. Spam is a data set collected at Hewlett-Packard Labs, that classifies 4601 e-
 * Are there certain words that spam emails are more likely to contain?
 * What's the best way to block spam emails without filtering out non-spams?
 
-b. 
+b. Data spam is loaded.
+
+c. Make a table of the first few rows of the data set.
+```{r}
+head(spam)
+```
+
+d. Include an image.
+![Spam image](https://images.techhive.com/images/article/2016/06/spam_email_screen_stock-100664936-large.jpg)
+
+# Summary of Data
+a. three variables: mail, you, will
+```{r}
+(mail_summary <- tapply(spam$mail, spam$type, summary))
+(you_summary <- tapply(spam$you, spam$type, summary))
+(will_summary <- tapply(spam$will, spam$type, summary))
+```
+
+b. The mean of mail is `r mail_summary$nonspam[4]` for nonspam and `r mail_summary$spam[4]` for spam. The mean of you is `r you_summary$nonspam[4]` for nonspam and `r you_summary$spam[4]` for spam. The mean of will is `r will_summary$nonspam[4]` for nonspam and `r will_summary$spam[4]` for spam.
+
+c. Explore your data with a minimum of 2 graphs.
+```{r}
+spam2 <- data.frame(spam$mail, spam$you, spam$will, spam$your, spam$type, spam$our)
+plot(spam2)
+
+```
+
+
+
+
