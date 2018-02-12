@@ -8,6 +8,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 #install.packages('rmarkdown')
 #install.packages("install.load")
+library(reshape2)
 library(rmarkdown)
 library(install.load)
 install_load("mosaic","ggplot2","devtools","tidyverse")
@@ -54,8 +55,19 @@ c. Explore your data with a minimum of 2 graphs.
 spam2 <- data.frame(spam$mail, spam$you, spam$will, spam$your, spam$type, spam$our)
 plot(spam2)
 
+spam3 <- melt(spam2, id.vars = "spam.type")
+ggplot(data=spam3, aes(spam.type, value, fill=variable)) + geom_bar(stat = "identity", position = "dodge")
+
 ```
 
+# Conclusion
+Emails that contain word *mail*, *you*, *will*, and *our* have a higher possibility of being spams.
+
+9. 
+Name          | Description
+------------- | -------------
+Comments      | begin with the number sign (#)
+End a document within a stream  | Three periods (...)
 
 
 
